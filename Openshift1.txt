@@ -1,0 +1,162 @@
+
+
+$ ~/.launch.sh
+Starting OpenShift
+Waiting for OpenShift to start... This may take a couple of moments
+OpenShift started.
+Configuring... OpenShift Ready
+$ oc login -u developer -p developer 2886795284-8443-kitek02.environments.katacoda.com --insecure-skip-tls-verify=true
+Login successful.
+
+You don't have any projects. You can try to create a new project, by running
+
+    oc new-project <projectname>
+
+$ oc new-project messaging
+Now using project "messaging" on server "https://2886795284-8443-kitek02.environments.katacoda.com:443".
+
+You can add applications to this project with the 'new-app' command. For example, try:
+
+    oc new-app centos/ruby-22-centos7~https://github.com/openshift/ruby-ex.git
+
+to build a new example application in Ruby.
+$ oc create sa amq-service-account
+serviceaccount "amq-service-account" created
+$ oc policy add-role-to-user view system:serviceaccount:messaging:amq-service-account
+role "view" added: "system:serviceaccount:messaging:amq-service-account"
+$ oc new-app amq-broker-71-basic -p AMQ_PROTOCOL=openwire,amqp,stomp,mqtt -p AMQ_USER=amquser -p AMQ_PASSWORD=amqpassword -p AMQ_QUEUES=example
+error: Errors occurred while determining argument types:
+
+amq-broker-71-basic as a local directory pointing to a Git repository:  stat amq-broker-71-basic: no such file or directory
+
+Errors occurred during resource creation:
+error: no match for "amq-broker-71-basic"
+
+The 'oc new-app' command will match arguments to the following types:
+
+  1. Images tagged into image streams in the current project or the 'openshift' project
+     - if you don't specify a tag, we'll add ':latest'
+  2. Images in the Docker Hub, on remote registries, or on the local Docker engine
+  3. Templates in the current project or the 'openshift' project
+  4. Git repository URLs or local paths that point to Git repositories
+
+--allow-missing-images can be used to point to an image that does not exist yet.
+
+See 'oc new-app -h' for examples.
+$ oc new-app amq-broker-71-basic -p AMQ_PROTOCOL=openwire,amqp,stomp,mqtt -p AMQ_USER=amquser -p AMQ_PASSWORD=amqpassword-p AMQ_QUEUES=example
+error: Errors occurred while determining argument types:
+
+amq-broker-71-basic as a local directory pointing to a Git repository:  stat amq-broker-71-basic: no such file or directory
+
+Errors occurred during resource creation:
+error: no match for "amq-broker-71-basic"
+
+The 'oc new-app' command will match arguments to the following types:
+
+  1. Images tagged into image streams in the current project or the 'openshift' project
+     - if you don't specify a tag, we'll add ':latest'
+  2. Images in the Docker Hub, on remote registries, or on the local Docker engine
+  3. Templates in the current project or the 'openshift' project
+  4. Git repository URLs or local paths that point to Git repositories
+
+--allow-missing-images can be used to point to an image that does not exist yet.
+
+See 'oc new-app -h' for examples.
+$ oc new-app amq-broker-71-basic -p AMQ_PROTOCOL=openwire,amqp,stomp,mqtt -p AMQ_USER=amquser -p AMQ_PASSWORD=amqpassword-p AMQ_QUEUES=example
+error: Errors occurred while determining argument types:
+
+amq-broker-71-basic as a local directory pointing to a Git repository:  stat amq-broker-71-basic: no such file or directory
+
+Errors occurred during resource creation:
+error: no match for "amq-broker-71-basic"
+
+The 'oc new-app' command will match arguments to the following types:
+
+  1. Images tagged into image streams in the current project or the 'openshift' project
+     - if you don't specify a tag, we'll add ':latest'
+  2. Images in the Docker Hub, on remote registries, or on the local Docker engine
+  3. Templates in the current project or the 'openshift' project
+  4. Git repository URLs or local paths that point to Git repositories
+
+--allow-missing-images can be used to point to an image that does not exist yet.
+
+See 'oc new-app -h' for examples.
+$ oc projects
+You have one project on this server: "messaging".
+
+Using project "messaging" on server "https://2886795284-8443-kitek02.environments.katacoda.com:443".
+$ oc new-app amq-broker-71-basic -p AMQ_PROTOCOL=openwire,amqp,stomp,mqtt -p AMQ_USER=amquser -p AMQ_PASSWORD=amqpassword-p AMQ_QUEUES=example
+error: Errors occurred while determining argument types:
+
+amq-broker-71-basic as a local directory pointing to a Git repository:  stat amq-broker-71-basic: no such file or directory
+
+Errors occurred during resource creation:
+error: no match for "amq-broker-71-basic"
+
+The 'oc new-app' command will match arguments to the following types:
+
+  1. Images tagged into image streams in the current project or the 'openshift' project
+     - if you don't specify a tag, we'll add ':latest'
+  2. Images in the Docker Hub, on remote registries, or on the local Docker engine
+  3. Templates in the current project or the 'openshift' project
+  4. Git repository URLs or local paths that point to Git repositories
+
+--allow-missing-images can be used to point to an image that does not exist yet.
+
+See 'oc new-app -h' for examples.
+$ oc new-app amq-broker-71-basic -p AMQ_PROTOCOL=openwire,amqp,stomp,mqtt -p AMQ_USER=amquser -p AMQ_PASSWORD=amqpassword -p AMQ_QUEUES=example --allow-missing-images
+W0406 08:43:49.431759     433 newapp.go:440] Could not find an image stream match for "amq-broker-71-basic". Make sure that a Docker image with that tag is available on the node for the deployment to succeed.
+    * This image will be deployed in deployment config "amq-broker-71-basic"
+
+--> Creating resources ...
+    deploymentconfig "amq-broker-71-basic" created
+--> Success
+    Run 'oc status' to view your app.
+$ co status
+-bash: co: command not found
+$ oc status
+In project messaging on server https://2886795284-8443-kitek02.environments.katacoda.com:443
+
+dc/amq-broker-71-basic deploys docker.io/library/amq-broker-71-basic:latest
+  deployment #1 running for 9 seconds - 0/1 pods
+
+View details with 'oc describe <resource>/<name>' or list everything with 'oc get all'.
+$ oc get pods
+NAME                           READY     STATUS         RESTARTS   AGE
+amq-broker-71-basic-1-2bsdz    0/1       ErrImagePull   0          17s
+amq-broker-71-basic-1-deploy   1/1       Running        0          19s
+$ oc delete amq-broker-71-basic-1-2bsdz
+error: resource(s) were provided, but no name, label selector, or --all flag specified
+$ oc status
+In project messaging on server https://2886795284-8443-kitek02.environments.katacoda.com:443
+
+dc/amq-broker-71-basic deploys docker.io/library/amq-broker-71-basic:latest
+  deployment #1 running for about a minute - 0/1 pods
+
+View details with 'oc describe <resource>/<name>' or list everything with 'oc get all'.
+$ cd /root/projects/amq-examples/amq-js-demo
+$ npm install
+npm WARN saveError ENOENT: no such file or directory, open '/root/projects/amq-examples/amq-js-demo/package.json'
+npm notice created a lockfile as package-lock.json. You should commit this file.
+npm WARN enoent ENOENT: no such file or directory, open '/root/projects/amq-examples/amq-js-demo/package.json'
+npm WARN amq-js-demo No description
+npm WARN amq-js-demo No repository field.
+npm WARN amq-js-demo No README data
+npm WARN amq-js-demo No license field.
+
+up to date in 0.926s
+found 0 vulnerabilities
+
+$ npm run openshift
+npm ERR! code ENOENT
+npm ERR! syscall open
+npm ERR! path /root/projects/amq-examples/amq-js-demo/package.json
+npm ERR! errno -2
+npm ERR! enoent ENOENT: no such file or directory, open '/root/projects/amq-examples/amq-js-demo/package.json'
+npm ERR! enoent This is related to npm not being able to find a file.
+npm ERR! enoent
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /root/.npm/_logs/2020-04-06T08_46_05_335Z-debug.log
+$
+$
