@@ -1,0 +1,13 @@
+Red Hat OpenShift Container Platform 4
+
+How to set up log rotation of pods under CRI-O.
+The kubelet is in charge of doing the log rotation, which is actually overriding whatever value the crio.conf file has.
+How to specify the maximum size allowed for container log files?
+How to change the default unlimited container log file size?
+How to set log_size_max for CRI-O in OpenShift 4?
+
+https://access.redhat.com/solutions/4924281
+
+
+[200~
+
