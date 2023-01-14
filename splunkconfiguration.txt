@@ -1,0 +1,28 @@
+splunk configured sucessfully 
+
+0. You need to be in the project "openshift-logging"
+1. mkdir splunk
+2. cd splunk 
+3. helm3 repo add splunk-otel-collector-chart https://signalfx.github.io/splunk-otel-collector-chart
+4.helm3 install krishna-splunk-otel-collector --values values.yaml splunk-otel-collector-chart/splunk-otel-collector
+5. krishna@vaikunth:~/splunk$ oc get pods
+NAME                                            READY   STATUS      RESTARTS   AGE
+krishna-splunk-otel-collector-agent-        1/1     Running     0          27s
+krishna-splunk-otel-collector-agent-         1/1     Running     0          27s
+
+6. krishna@vaikunth:~/splunk$ oc logs krishna-splunk-otel-collector-agent-6q5r4
+000000000 14:51:30 settings.go:310: Set config to [/conf/relay.yaml]
+000000000 14:51:30 settings.go:363: Set ballast to 165 MiB
+000000000 14:51:30 settings.go:379: Set memory limit to 450 MiB
+00000000014:51:30.288Z        info    service/telemetry.go:111        Setting up own telemetry...
+20220
+00000000014:51:30.486Z        info    healthcheck/handler.go:129      Health Check state change       {"kind": "extension", "name": "health_check", "status": "ready"}
+00000000014:51:30.486Z        info    service/service.go:105  Everything is ready. Begin running and processing data.
+00000000014:51:30.781Z        info    fileconsumer/file.go:159        Started watching file   {"kind": "receiver", "name": "filelog", "pipeline": "logs", "component": "fileconsumer", "path": "/var/log/pods/3scale-2_apicast-staging-1-5g5qx_3f7bff34-5610-4ffc-9de7-85403c3c5b3b/apicast-staging/0.log"}
+krishna@vaikunth:~/splunk$
+
+
+https://github.com/signalfx/splunk-otel-collector-chart
+
+2.helm repo add splunk-otel-collector-chart https://signalfx.github.io/splunk-otel-collector-chart
+1.helm install my-splunk-otel-collector --values my_values.yaml splunk-otel-collector-chart/splunk-otel-collector
