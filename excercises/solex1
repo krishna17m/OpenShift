@@ -1,0 +1,16 @@
+podman run -d -p 8080:80 --name httpd-basic quay.io/redhattraining/httpd-parent:2.4
+Trying to pull quay.io/redhattraining/httpd-parent:2.4...
+Getting image source signatures
+Copying blob a3ed95caeb02 done  
+Copying blob a3ed95caeb02 done  
+Copying blob a3ed95caeb02 done  
+Copying blob 6a5240d60dc4 done  
+Copying blob 787f47dbeaac done  
+Copying blob 08b8c9fdec44 done  
+Copying blob a3ed95caeb02 skipped: already exists  
+Copying blob a3ed95caeb02 skipped: already exists  
+Copying blob a3ed95caeb02 skipped: already exists  
+Copying blob 408208567b9a done  
+Writing manifest to image destination
+Storing signatures
+55e002d2708f3ff4bf2343a57537960f29104c71a88756cc6942b504344c1fac
