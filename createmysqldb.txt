@@ -1,0 +1,18 @@
+    1  exit
+    2  lab container-create start
+    3  podman login registry.redhat.io
+    4  podman run --name mysql-basic  -e MYSQL_USER=user1 -e MYSQL_PASSWORD=mypa55  -e MYSQL_DATABASE=itemsp o-dem aMnY SrQuLn_ R-O-OnTa_mPeA SmSyWsOqRlD-=bra0s0itcp a 5-5e   M-YdS QrLe_gUiSsEtRr=yu.sreerd1h a-te. iMoY/SrQhLe_lP8A/SmSyWsOqRlD-=8m0y:p1a55  -e MYSQL_DATABASE=items -e MYSQL_ROOT_PASSWORD=r00tpa55  -d registry.redhat.io/rhel8/mysql-80:1
+    5  clear
+    6  podman run --name mysql-basic > -e MYSQL_USER=user1 -e MYSQL_PASSWORD=mypa55 > -e MYSQL_DATABASE=items -e MYSQL_ROOT_PASSWORD=r00tpa55 > -d registry.redhat.io/rhel8/mysql-80:1
+    7  podman run --name mysql-basic -e MYSQL_USER=user1 -e MYSQL_PASSWORD=mypa55 -e MYSQL_DATABASE=items -e MYSQL_ROOT_PASSWORD=r00tpa55 -d registry.redhat.io/rhel8/mysql-80:1
+    8  podman ps --format "{{.ID}} {{.Image}} {{.Names}}"
+    9   podman exec -it mysql-basic /bin/bash
+   10  clear
+   11  history
+   12  git clone https://github.com/krishna17m/OpenShift.git
+   13  ls
+   14  ls -lrt
+   15  cd OpenShift/
+   16  ll
+   17  history 
+   18  history > createmysqldb.txt

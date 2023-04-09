@@ -1,0 +1,24 @@
+mysql> SHOW TABLES;
++-----------------+
+| Tables_in_items |
++-----------------+
+| Projects        |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> INSERT INTO Projects (id, name, code) VALUES (1,'DevOps','ram');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT * FROM Projects;
++----+--------+-------+
+| id | name   | code  |
++----+--------+-------+
+|  1 | DevOps | ram |
++----+--------+-------+
+1 row in set (0.00 sec)
+
+mysql> EXIT
+Bye
+bash-4.4$ exit
+
+
